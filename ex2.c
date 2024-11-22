@@ -19,19 +19,17 @@ int main() {
     int leftSum = 0;
     int numberLength = 0;
     int temp = 0;
-    int isBalanced = -1;
+    int isBalanced;
     int divisorsSum = 0;
     int reversedNumber = 0;
-    int isPrime = 1;
+    int isPrime;
 	int power = 0;
 	int j = 0;
-	int isHappy = -1;
 	int digitsSquareSum = 0;
 	int smile = 1;
 	int cheer = 1;
 	int check = 0;
 	int maxNumber = 0;
-	char buffer = 'a';
 	// Case 1: Draw Happy Face with given symbols for eyes, nose and mouse
 	/* Example:
 	* n = 3:
