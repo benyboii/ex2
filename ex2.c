@@ -19,7 +19,6 @@ int main() {
     int leftSum = 0;
     int numberLength = 0;
     int temp = 0;
-    int isBalanced;
     int divisorsSum = 0;
     int reversedNumber = 0;
     int isPrime;
@@ -38,7 +37,6 @@ int main() {
 	* \___/
 	*/
   	while(option != 7){
-        isBalanced = -1;
   	    printf("Choose an option:\n");
   		printf("\t1. Happy Face\n");
   		printf("\t2. Balanced Number\n");
@@ -85,38 +83,35 @@ int main() {
         		break;
             }
             case 2:{
-            	while(isBalanced == -1){
-            		rightSum = 0;
-                    leftSum = 0;
-                    numberLength = 0;
-              		printf("Enter a number:\n");
+            	rightSum = 0;
+                leftSum = 0;
+                numberLength = 0;
+              	printf("Enter a number:\n");
+              	scanf(" %d",&number);
+              	while(number < 1){
+              		printf("Only positive number is allowed, please try again:\n");
               		scanf(" %d",&number);
-              		while(number < 1){
-              			printf("Only positive number is allowed, please try again:\n");
-              			scanf(" %d",&number);
-              		}
-            		temp = number;
-            		while (temp != 0){
-            			temp = temp/10;
-            			numberLength++;
-            		}
-            		temp = number;
-            		for(i = 0; i< numberLength; i++){
-            			if(i < numberLength/2){
-            				rightSum += temp%10;
-            			}
-            			else{
-            				leftSum += temp%10;
-            			}
-            			temp /= 10;
-            		}
-            		if(rightSum == leftSum){
-            			printf("This number is balanced and brings harmony!\n");
-                        isBalanced = 1;
+              	}
+            	temp = number;
+            	while (temp != 0){
+            		temp = temp/10;
+            		numberLength++;
+            	}
+            	temp = number;
+            	for(i = 0; i< numberLength; i++){
+            		if(i < numberLength/2){
+            			rightSum += temp%10;
             		}
             		else{
-            			printf("This number isn't balanced and destroys harmony.\n");
+            			leftSum += temp%10;
             		}
+            		temp /= 10;
+            	}
+            	if(rightSum == leftSum){
+            		printf("This number is balanced and brings harmony!\n");
+            	}
+            	else{
+            		printf("This number isn't balanced and destroys harmony.\n");
             	}
         		break;
             }
