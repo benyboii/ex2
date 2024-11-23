@@ -29,13 +29,6 @@ int main() {
 	int cheer = 1;
 	int check = 0;
 	int maxNumber = 0;
-	// Case 1: Draw Happy Face with given symbols for eyes, nose and mouse
-	/* Example:
-	* n = 3:
-	* 0   0
-	*   o
-	* \___/
-	*/
   	while(option != 7){
   	    printf("Choose an option:\n");
   		printf("\t1. Happy Face\n");
@@ -98,15 +91,15 @@ int main() {
             		numberLength++;
             	}
             	temp = number;
-            	for(i = 0; i< numberLength; i++){
-            		if(i < numberLength/2){
-            			rightSum += temp%10;
-            		}
-            		else{
-            			leftSum += temp%10;
-            		}
-            		temp /= 10;
-            	}
+        		for(i = 0; i< numberLength; i++){
+        			if(i < numberLength/2){
+        				rightSum += temp%10;
+        			}
+        			else if((i > numberLength/2 && numberLength %2 != 0) || numberLength % 2 == 0){
+        				leftSum += temp%10;
+        			}
+        			temp /= 10;
+        		}
             	if(rightSum == leftSum){
             		printf("This number is balanced and brings harmony!\n");
             	}
