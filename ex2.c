@@ -21,12 +21,12 @@ int main() {
     int temp = 0;
     int divisorsSum = 0;
     int reversedNumber = 0;
-    int isPrime;
+    int isPrime = 1;
 	int power = 0;
 	int j = 0;
 	int digitsSquareSum = 0;
-	int smile = 1;
-	int cheer = 1;
+	int smile = 0;
+	int cheer = 0;
 	int check = 0;
 	int maxNumber = 0;
   	while(option != 7){
@@ -183,7 +183,6 @@ int main() {
         			printf("Only positive number is allowed, please try again:\n");
         			scanf(" %d",&number);
         		}
-        		i = 0;
         		printf("Between 1 and %d only these numbers bring happiness: 1",number);
         		for(i = 7; i <= number; i++) {
         			digitsSquareSum = 0;
@@ -207,33 +206,29 @@ int main() {
         		break;
             }
             case 6:{
-        		printf("Enter a smile and cheer number:\n");
-        		check = scanf(" smile: %d , cheer : %d",&smile,&cheer);
-        		do {
-        			temp = scanf("%*[^\n]%*c");
+        		do {//cleans the buffer
+        			temp = scanf("%*[^\n]");
+        			scanf("%*c");
         		}
         		while(temp == -1);
-        		while(check != 2 || smile < 1 || cheer < 1) {
-        			printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
-        			check = scanf(" smile: %d , cheer : %d",&smile,&cheer);
+        		printf("Enter a smile and cheer number:\n");
+				check = scanf("smile: %d , cheer: %d", &smile, &cheer);
+        		while(check != 2 || smile <= 0 || cheer <= 0 || cheer == smile) {
+        			smile = 0;
+        			cheer = 0;
         			do {
-        				temp = scanf("%*[^\n]%*c");
+        				temp = scanf("%*[^\n]");
+        				scanf("%*c");
         			}
         			while(temp == -1);
+        			printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+                    check = scanf("smile: %d , cheer : %d",&smile,&cheer);
         		}
         		printf("Enter maximum number for the festival:\n");
         		scanf(" %d",&maxNumber);
-        		do {
-        			temp = scanf("%*[^\n]%*c");
-        		}
-        		while(temp == -1);
         		while(maxNumber < 1) {
         			printf("Only positive maximum number is allowed, please try again:\n");
         			scanf(" %d",&maxNumber);
-        			do {
-        				temp = scanf("%*[^\n]%*c");
-        			}
-        			while(temp == -1);
         		}
         		for(i = 1; i <= maxNumber; i++) {
         			if(i % smile == 0 && i % cheer == 0) {
@@ -257,13 +252,6 @@ int main() {
             default: printf("This option is not available, please try again.\n");
     	}
     }
-	// Festival of Laughter: Prints all the numbers between 1 the given number:
-	// and replace with "Smile!" every number that divided by the given smile number
-	// and replace with "Cheer!" every number that divided by the given cheer number
-	// and replace with "Festival!" every number that divided by both of them
-	/* Example:
-	6, smile: 2, cheer: 3 : 1, Smile!, Cheer!, Smile!, 5, Festival!
-	*/
 	printf("Thank you for your journey through Numeria!\n");
 	return 0;
 }
